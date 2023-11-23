@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Reservations = ({ history }) => {
+const Reservations = () => {
   const [formData, setFormData] = useState({
     name: "",
     day: "",
   });
+
+  const navigate = useNavigate ();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -14,7 +17,7 @@ const Reservations = ({ history }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     localStorage.setItem("reservationData", JSON.stringify(formData));
-    history.push("/");
+    navigate("/");
   };
 
   return (
